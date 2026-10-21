@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Menu & Settings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="quick-menu-wrapper">
+        <!-- Scanlines Background Overlay -->
+        <div class="scanlines"></div>
+
+        <!-- ================= VIEW 1: QUICK MENU ================= -->
+        <div id="view-quickmenu" class="view-panel active-view">
+            <!-- Full Viewport SVG Vector Panel (Exact 44.5% top to 12.5% bottom diagonal) -->
+            <svg class="fullscreen-panel-svg" viewBox="0 0 1000 1080" preserveAspectRatio="none">
+                <defs>
+                    <clipPath id="panel-shape-clip">
+                        <polygon points="0,0 345,0 115,1080 0,1080" />
+                    </clipPath>
+                </defs>
+
+                <!-- Base White Polygonal Background with Soft Ice-Blue Tint -->
+                <polygon points="0,0 345,0 115,1080 0,1080" fill="#f5fafd" />
+
+                <!-- Low-Poly Crystalline Facets (Soft Cold Blue Tinted Mesh) -->
+                <g clip-path="url(#panel-shape-clip)">
+                    <polygon points="0,0 190,0 105,140" fill="#fbfdff" />
+                    <polygon points="190,0 345,0 230,160" fill="#eff6fb" />
+                    <polygon points="0,0 105,140 0,260" fill="#f6fafd" />
+                    <polygon points="105,140 230,160 145,310" fill="#e5f0f7" />
+                    <polygon points="230,160 345,0 305,280" fill="#dbeef8" />
+                    
+                    <polygon points="0,260 105,140 145,310" fill="#f0f7fc" />
+                    <polygon points="0,260 145,310 0,460" fill="#f8fcfe" />
+                    <polygon points="145,310 230,160 305,280" fill="#d7eaf6" />
+                    <polygon points="145,310 305,280 230,450" fill="#cee4f2" />
+                    <polygon points="145,310 230,450 120,520" fill="#e2f0f8" />
+                    
+                    <polygon points="0,460 145,310 120,520" fill="#ecf5fb" />
+                    <polygon points="0,460 120,520 0,650" fill="#f6fafd" />
+                    <polygon points="120,520 230,450 195,630" fill="#d9edf7" />
+                    <polygon points="230,450 305,280 270,570" fill="#cbe2f0" />
+                    <polygon points="230,450 270,570 195,630" fill="#d2e7f4" />
+                    
+                    <polygon points="0,650 120,520 195,630" fill="#e7f2f9" />
+                    <polygon points="0,650 195,630 85,810" fill="#f0f7fc" />
+                    <polygon points="0,650 85,810 0,880" fill="#f8fcfe" />
+                    <polygon points="195,630 270,570 210,780" fill="#d5e9f5" />
+                    <polygon points="195,630 210,780 85,810" fill="#e0f0f8" />
+                    
+                    <polygon points="0,880 85,810 120,1010" fill="#eaf4fa" />
+                    <polygon points="0,880 120,1010 0,1080" fill="#f5fafd" />
+                    <polygon points="85,810 210,780 150,980" fill="#d8ecf6" />
+                    <polygon points="85,810 150,980 120,1010" fill="#deeff8" />
+                    <polygon points="120,1010 150,980 115,1080" fill="#cfe5f2" />
+                    <polygon points="120,1010 115,1080 0,1080" fill="#daf0f8" />
+                </g>
+
+                <!-- Dark Translucent Diagonal Band (Narrow Blue-Grey Strip) -->
+                <polygon class="diagonal-translucent-band" points="345,0 357,0 127,1080 115,1080" />
+
+                <!-- Thin Contour Edge Lines on Band Margins -->
+                <line class="band-edge-inner" x1="345" y1="0" x2="115" y2="1080" />
+                <line class="band-edge-outer" x1="357" y1="0" x2="127" y2="1080" />
+            </svg>
+
+            <!-- Menu Content Elements -->
+            <div class="menu-content">
+                <div class="menu-header">
+                    <h1 class="menu-title">QUICK MENU</h1>
+                    <div class="header-divider"></div>
+                </div>
+
+                <div class="menu-items" id="menu-items">
+                    <div class="menu-item active" data-action="resume" data-index="0">
+                        <span class="item-text">RESUME</span>
+                    </div>
+                    <div class="menu-item" data-action="map" data-index="1">
+                        <span class="item-text">MAP</span>
+                    </div>
+                    <div class="menu-item" data-action="settings" data-index="2">
+                        <span class="item-text">SETTINGS</span>
+                    </div>
+                    <div class="menu-item" data-action="achievements" data-index="3">
+                        <span class="item-text">ACHIEVEMENTS</span>
+                    </div>
+                    <div class="menu-item" data-action="hub" data-index="4">
+                        <span class="item-text">HUB</span>
+                    </div>
+                    <div class="menu-item" data-action="legal" data-index="5">
+                        <span class="item-text">LEGAL INFORMATION</span>
+                    </div>
+                    <div class="menu-item" data-action="exit" data-index="6">
+                        <span class="item-text">EXIT</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Right Hints for Quick Menu -->
+            <div class="bottom-hints">
+                <div class="hint-item">
+                    <span class="keycap"><svg width="10" height="13" viewBox="0 0 10 13" fill="#000"><polygon points="5,1 1,5 9,5"/><polygon points="5,12 1,8 9,8"/></svg></span>
+                    <span class="hint-label">MOVE</span>
+                </div>
+                <span class="hint-divider">/</span>
+                <div class="hint-item">
+                    <span class="keycap"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#000" stroke-width="2" stroke-linecap="square"><path d="M10 2v5H3M6 4.5L3 7l3 2.5"/></svg></span>
+                    <span class="hint-label">SELECT</span>
+                </div>
+                <span class="hint-divider">/</span>
+                <div class="hint-item">
+                    <span class="keycap text-keycap">ESC</span>
+                    <span class="hint-label">RESUME</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= VIEW 2: FULL SETTINGS ================= -->
+        <div id="view-settings" class="view-panel">
+            <div class="settings-topbar">
+                <div class="tab-arrow-key" id="prev-tab">Q</div>
+                <div class="settings-tabs" id="settings-tabs">
+                    <div class="set-tab" data-tab="game">GAME</div>
+                    <div class="set-tab" data-tab="audio">AUDIO</div>
+                    <div class="set-tab" data-tab="display">DISPLAY</div>
+                    <div class="set-tab active" data-tab="graphics">GRAPHICS</div>
+                    <div class="set-tab" data-tab="voice">VOICE CHAT</div>
+                    <div class="set-tab" data-tab="mouse">KEYBOARD / MOUSE</div>
+                    <div class="set-tab" data-tab="keybinds">KEY BINDINGS</div>
+                </div>
+                <div class="tab-arrow-key" id="next-tab">E</div>
+            </div>
+
+            <!-- PAGE 1: GAME -->
+            <div class="tab-page" id="page-game">
+                <div class="settings-content-layout">
+                    <div class="settings-options-list">
+                        <div class="option-row active-opt action-opt" data-action="disconnect" data-title="Disconnect" data-desc="Disconnect from the current FiveM server session.">
+                            <span class="opt-label">Disconnect</span>
+                            <div class="opt-control"><span class="opt-val">ENTER</span></div>
+                        </div>
+                        <div class="option-row action-opt" data-action="exit" data-title="Exit Game" data-desc="Quit Grand Theft Auto V and return to desktop.">
+                            <span class="opt-label">Exit Game</span>
+                            <div class="opt-control"><span class="opt-val">ENTER</span></div>
+                        </div>
+                    </div>
+                    <div class="settings-preview-col">
+                        <div class="preview-title">Disconnect</div>
+                        <div class="preview-media-box"><div class="preview-scene-graphic"></div></div>
+                        <div class="preview-description">Disconnect from the current FiveM server session.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 3: AUDIO -->
+            <div class="tab-page" id="page-audio">
+                <div class="settings-content-layout">
+                    <div class="settings-options-list">
+                        <div class="section-header">VOLUME LEVELS</div>
+                        <div class="option-row active-opt" data-key="sfx_vol" data-title="SFX VOLUME" data-desc="Adjust sound effects and environment sound level." data-values="100%,90%,80%,70%,60%,50%,40%,30%,20%,10%,OFF">
+                            <span class="opt-label">SFX VOLUME</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">100%</span><div class="indicator-bar"><div class="bar-ticks"><span></span><span></span><span></span><span></span><span></span></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="option-row" data-key="music_vol" data-title="MUSIC VOLUME" data-desc="Adjust in-game background score and soundtrack volume." data-values="100%,90%,80%,70%,60%,50%,40%,30%,20%,10%,OFF">
+                            <span class="opt-label">MUSIC VOLUME</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">60%</span><div class="indicator-bar"><div class="bar-ticks"><span></span><span></span><span></span><span></span><span></span></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="section-header">OUTPUT & CHANNELS</div>
+                        <div class="option-row" data-key="radio_station" data-title="RADIO STATION" data-desc="Select active vehicle radio broadcast station." data-values="OFF,RADIO LOS SANTOS,WEST COAST CLASSICS,NON-STOP-POP FM,LOS SANTOS ROCK RADIO,FLYLO FM,THE BLUE ARK">
+                            <span class="opt-label">RADIO STATION</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">OFF</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="option-row" data-key="audio_output" data-title="AUDIO OUTPUT" data-desc="Configure hardware speaker acoustic configuration." data-values="STEREO HEADPHONES,SURROUND SOUND,STEREO SPEAKERS">
+                            <span class="opt-label">AUDIO OUTPUT</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">STEREO HEADPHONES</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="option-row" data-key="mute_focus_loss" data-title="MUTE ON FOCUS LOSS" data-desc="Mutes game audio when ALT-tabbed or running in background." data-values="OFF,ON">
+                            <span class="opt-label">MUTE ON FOCUS LOSS</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">OFF</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-preview-col">
+                        <div class="preview-title">SFX VOLUME</div>
+                        <div class="preview-media-box"><div class="preview-scene-graphic"></div></div>
+                        <div class="preview-description">Adjust sound effects and environment sound level.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 4: DISPLAY -->
+            <div class="tab-page" id="page-display">
+                <div class="settings-content-layout">
+                    <div class="settings-options-list">
+                        <div class="section-header">VISUAL CALIBRATION</div>
+                        <div class="option-row active-opt" data-key="brightness" data-title="BRIGHTNESS" data-desc="Adjust display gamma and luminance level." data-values="50%,60%,70%,80%,90%,100%,40%,30%,20%">
+                            <span class="opt-label">BRIGHTNESS</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">50%</span><div class="indicator-bar"><div class="bar-ticks"><span></span><span></span><span></span><span></span><span></span></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="option-row" data-key="safezone_size" data-title="SAFEZONE SIZE" data-desc="Adjust UI viewport safe margins from display borders." data-values="100%,95%,90%,85%">
+                            <span class="opt-label">SAFEZONE SIZE</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">100%</span><div class="indicator-bar"><div class="bar-ticks"><span></span><span></span><span></span><span></span><span></span></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="section-header">RETICLE & TARGETING</div>
+                        <div class="option-row" data-key="weapon_target" data-title="WEAPON TARGET" data-desc="Select weapon aiming reticle complexity." data-values="COMPLEX,SIMPLE">
+                            <span class="opt-label">WEAPON TARGET</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">COMPLEX</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="option-row" data-key="reticle_size" data-title="RETICLE SIZE" data-desc="Scale size of the on-screen crosshair." data-values="NORMAL,LARGE,SMALL">
+                            <span class="opt-label">RETICLE SIZE</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">NORMAL</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="option-row" data-key="gps_route_display" data-title="GPS ROUTE DISPLAY" data-desc="Toggles mini-map GPS navigation display." data-values="ON,OFF">
+                            <span class="opt-label">GPS ROUTE DISPLAY</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">ON</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-preview-col">
+                        <div class="preview-title">BRIGHTNESS</div>
+                        <div class="preview-media-box"><div class="preview-scene-graphic"></div></div>
+                        <div class="preview-description">Adjust display gamma and luminance level.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 5: GRAPHICS (EXACT IMAGE 1 REPLICA) -->
+            <div class="tab-page active-page" id="page-graphics">
+                <div class="vram-section">
+                    <div class="vram-labels">
+                        <span class="vram-main">VIDEO MEMORY USAGE: <strong class="cyan-txt" id="vram-used-text">9.92 GB</strong> / <strong class="cyan-txt" id="vram-total-text">24 GB</strong></span>
+                        <span class="vram-sub">OTHER APPS: <strong class="cyan-txt">1.17 GB</strong></span>
+                    </div>
+                    <div class="vram-bar-track">
+                        <div class="vram-bar-fill" id="vram-bar-fill" style="width: 41%;"></div>
+                    </div>
+                </div>
+
+                <div class="settings-content-layout">
+                    <div class="settings-options-list" id="graphics-options">
+                        <div class="option-row active-opt" data-key="ignore_limits" data-title="IGNORE SUGGESTED LIMITS" data-desc="Allows configuring graphics settings beyond recommended VRAM thresholds." data-values="ON,OFF">
+                            <span class="opt-label">Ignore Suggested Limits</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">ON</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+
+                        <div class="option-row" data-key="directx_version" data-title="DIRECTX VERSION" data-desc="Select DirectX rendering API backend." data-values="DirectX 11,DirectX 10.1,DirectX 10">
+                            <span class="opt-label">DirectX Version</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">DirectX 11</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+
+                        <div class="option-row" data-key="resolution" data-title="RENDER RESOLUTION" data-desc="Adjust display pixel rendering resolution." data-values="1920x1080,2560x1440,3840x2160,1600x900,1280x720">
+                            <span class="opt-label">Render Resolution</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">1920x1080</span><div class="indicator-bar"><div class="bar-ticks"><span></span><span></span><span></span><span></span><span></span></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+
+                        <div class="option-row" data-key="output_monitor" data-title="OUTPUT MONITOR" data-desc="Select the primary output monitor for display." data-values="1,2,3">
+                            <span class="opt-label">Output Monitor</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">1</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+
+                        <div class="option-row" data-key="fxaa" data-title="FXAA" data-desc="Fast Approximate Anti-Aliasing for smoothing polygon edges." data-values="Off,On">
+                            <span class="opt-label">FXAA</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">Off</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+
+                        <div class="option-row" data-key="msaa" data-title="MSAA" data-desc="Multi-Sample Anti-Aliasing." data-values="Off,X2,X4,X8">
+                            <span class="opt-label">MSAA</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">Off</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+
+                        <div class="option-row" data-key="vsync" data-title="VSYNC" data-desc="Synchronizes game frame rate with monitor refresh rate to eliminate screen tearing." data-values="Off,On">
+                            <span class="opt-label">VSync</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">Off</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+
+                        <div class="option-row" data-key="pause_on_focus_loss" data-title="PAUSE GAME ON FOCUS LOSS" data-desc="Pauses or freezes rendering when window loses OS focus." data-values="Off,On">
+                            <span class="opt-label">Pause Game On Focus Loss</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">Off</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+
+                        <div class="option-row" data-key="pop_density" data-title="POPULATION DENSITY" data-desc="Adjust pedestrian and traffic density across San Andreas." data-values="100%,90%,80%,70%,60%,50%,40%,30%,20%,10%,0%">
+                            <span class="opt-label">Population Density</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">100%</span><div class="indicator-bar"><div class="bar-ticks"><span></span><span></span><span></span><span></span><span></span></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+
+                        <div class="option-row" data-key="pop_variety" data-title="POPULATION VARIETY" data-desc="Adjust diversity of civilian ped models and vehicles." data-values="100%,90%,80%,70%,60%,50%,40%,30%,20%,10%,0%">
+                            <span class="opt-label">Population Variety</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">100%</span><div class="indicator-bar"><div class="bar-ticks"><span></span><span></span><span></span><span></span><span></span></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+
+                        <div class="option-row" data-key="dist_scaling" data-title="DISTANCE SCALING" data-desc="Adjust draw distance LOD detail and object pop-in." data-values="100%,90%,80%,70%,60%,50%,40%,30%,20%,10%,0%">
+                            <span class="opt-label">Distance Scaling</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">100%</span><div class="indicator-bar"><div class="bar-ticks"><span></span><span></span><span></span><span></span><span></span></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-preview-col">
+                        <div class="preview-title" id="preview-title">Ignore Suggested Limits</div>
+                        <div class="preview-media-box">
+                            <div class="preview-scene-graphic">
+                                <div class="preview-character-silhouette"></div>
+                            </div>
+                        </div>
+                        <div class="preview-description" id="preview-description">
+                            Allows configuring graphics settings beyond recommended VRAM thresholds.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 7: VOICE CHAT -->
+            <div class="tab-page" id="page-voice">
+                <div class="settings-content-layout">
+                    <div class="settings-options-list">
+                        <div class="section-header">VOIP PLAYBACK</div>
+                        <div class="option-row active-opt" data-key="voice_chat" data-title="VOICE CHAT ENABLED" data-desc="Enable or disable proximity VoIP voice communication." data-values="ON,OFF">
+                            <span class="opt-label">VOICE CHAT ENABLED</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">ON</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="option-row" data-key="voice_output_device" data-title="VOICE CHAT OUTPUT DEVICE" data-desc="Select speaker or headphone output for voice." data-values="DEFAULT,HEADPHONES,SPEAKERS">
+                            <span class="opt-label">VOICE CHAT OUTPUT DEVICE</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">DEFAULT</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="option-row" data-key="voice_volume" data-title="VOICE CHAT VOLUME" data-desc="Incoming playback volume for other players voice audio." data-values="100%,90%,80%,70%,60%,50%">
+                            <span class="opt-label">VOICE CHAT VOLUME</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">100%</span><div class="indicator-bar"><div class="bar-ticks"><span></span><span></span><span></span><span></span><span></span></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="section-header">MICROPHONE CAPTURE</div>
+                        <div class="option-row" data-key="mic_enabled" data-title="MICROPHONE ENABLED" data-desc="Enable or disable voice transmission input." data-values="ON,OFF">
+                            <span class="opt-label">MICROPHONE ENABLED</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">ON</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="option-row" data-key="mic_input_device" data-title="MICROPHONE INPUT DEVICE" data-desc="Select active audio input capture device." data-values="DEFAULT MICROPHONE,USB AUDIO DEVICE">
+                            <span class="opt-label">MICROPHONE INPUT DEVICE</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">DEFAULT MICROPHONE</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="option-row" data-key="voice_mode" data-title="MICROPHONE MODE" data-desc="Select voice capture trigger method." data-values="PUSH TO TALK,VOICE ACTIVITY">
+                            <span class="opt-label">MICROPHONE MODE</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">PUSH TO TALK</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="option-row" data-key="mic_volume" data-title="MICROPHONE VOLUME" data-desc="Adjust microphone recording input volume level." data-values="100%,90%,80%,70%,60%,50%">
+                            <span class="opt-label">MICROPHONE VOLUME</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">100%</span><div class="indicator-bar"><div class="bar-ticks"><span></span><span></span><span></span><span></span><span></span></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="option-row" data-key="mic_sensitivity" data-title="MICROPHONE SENSITIVITY" data-desc="Input gain sensitivity threshold for voice capture." data-values="80%,100%,90%,70%,60%,50%">
+                            <span class="opt-label">MICROPHONE SENSITIVITY</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">80%</span><div class="indicator-bar"><div class="bar-ticks"><span></span><span></span><span></span><span></span><span></span></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-preview-col">
+                        <div class="preview-title">VOICE CHAT ENABLED</div>
+                        <div class="preview-media-box"><div class="preview-scene-graphic"></div></div>
+                        <div class="preview-description">Enable or disable proximity VoIP voice communication.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 8: KEYBOARD / MOUSE -->
+            <div class="tab-page" id="page-mouse">
+                <div class="settings-content-layout">
+                    <div class="settings-options-list">
+                        <div class="section-header">INPUT METHOD</div>
+                        <div class="option-row active-opt" data-key="mouse_input" data-title="MOUSE INPUT METHOD" data-desc="Select input polling API method." data-values="RAW INPUT,DIRECTINPUT,WINDOWS">
+                            <span class="opt-label">MOUSE INPUT METHOD</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">RAW INPUT</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="section-header">SENSITIVITY & INVERSION</div>
+                        <div class="option-row" data-key="invert_mouse_look" data-title="INVERT MOUSE LOOK" data-desc="Inverts vertical Y-axis look camera direction." data-values="OFF,ON">
+                            <span class="opt-label">INVERT MOUSE LOOK</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">OFF</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="option-row" data-key="mouse_look_sens" data-title="MOUSE LOOK SENSITIVITY" data-desc="Adjust look camera movement speed multiplier." data-values="5,1,2,3,4,6,7,8,9,10">
+                            <span class="opt-label">MOUSE LOOK SENSITIVITY</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">5</span><div class="indicator-bar"><div class="bar-ticks"><span></span><span></span><span></span><span></span><span></span></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="option-row" data-key="mouse_aim_sens" data-title="MOUSE AIM SENSITIVITY" data-desc="Adjust aiming weapon reticle movement speed." data-values="5,1,2,3,4,6,7,8,9,10">
+                            <span class="opt-label">MOUSE AIM SENSITIVITY</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">5</span><div class="indicator-bar"><div class="bar-ticks"><span></span><span></span><span></span><span></span><span></span></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="option-row" data-key="invert_mouse_fly" data-title="INVERT MOUSE FLYING" data-desc="Inverts aircraft flight pitch controls." data-values="OFF,ON">
+                            <span class="opt-label">INVERT MOUSE FLYING</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">OFF</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="option-row" data-key="mouse_fly_sens" data-title="MOUSE FLYING SENSITIVITY" data-desc="Adjust flight aircraft pitch and roll mouse control speed." data-values="5,1,2,3,4,6,7,8,9,10">
+                            <span class="opt-label">MOUSE FLYING SENSITIVITY</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">5</span><div class="indicator-bar"><div class="bar-ticks"><span></span><span></span><span></span><span></span><span></span></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                        <div class="option-row" data-key="invert_mouse_sub" data-title="INVERT MOUSE SUBMARINE" data-desc="Inverts submarine pitch controls." data-values="OFF,ON">
+                            <span class="opt-label">INVERT MOUSE SUBMARINE</span>
+                            <div class="opt-control">
+                                <span class="arrow-btn btn-prev">&lt;</span>
+                                <div class="val-box"><span class="opt-val">OFF</span><div class="indicator-bar"><div class="bar-solid"></div></div></div>
+                                <span class="arrow-btn btn-next">&gt;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-preview-col">
+                        <div class="preview-title">MOUSE INPUT METHOD</div>
+                        <div class="preview-media-box"><div class="preview-scene-graphic"></div></div>
+                        <div class="preview-description">Select input polling API method.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 7: KEY BINDINGS (EXACT REPLICA) -->
+            <div class="tab-page" id="page-keybinds">
+                <div class="keybinds-two-column">
+                    <!-- Left Subcategories List -->
+                    <div class="binds-categories-menu" id="binds-categories">
+                        <div class="bind-cat-item active" data-bindcat="general">General</div>
+                        <div class="bind-cat-item" data-bindcat="movement">Movement</div>
+                        <div class="bind-cat-item" data-bindcat="combat">Combat</div>
+                        <div class="bind-cat-item" data-bindcat="weapons">Weapons Select</div>
+                        <div class="bind-cat-item" data-bindcat="vehicle_gen">Vehicle General</div>
+                        <div class="bind-cat-item" data-bindcat="cars_bikes">Cars / Bikes / Boats</div>
+                        <div class="bind-cat-item" data-bindcat="aircraft">Aircraft</div>
+                        <div class="bind-cat-item" data-bindcat="submersibles">Submersibles</div>
+                        <div class="bind-cat-item" data-bindcat="parachute">Parachute</div>
+                        <div class="bind-cat-item" data-bindcat="cellphone">Cellphone</div>
+                        <div class="bind-cat-item" data-bindcat="gta_online">GTA Online</div>
+                        <div class="bind-cat-item" data-bindcat="gta_online_veh">GTA Online Vehicles</div>
+                        <div class="bind-cat-item" data-bindcat="fivem">FiveM</div>
+                        <div class="bind-cat-item default-cat" data-bindcat="restore">Restore All Defaults</div>
+                    </div>
+
+                    <!-- Right Keybinds Table -->
+                    <div class="binds-table-container">
+                        <div class="binds-table-header">
+                            <div class="th-action">ACTION</div>
+                            <div class="th-primary">PRIMARY</div>
+                            <div class="th-secondary">SECONDARY</div>
+                        </div>
+                        <div class="binds-table-body" id="binds-table-body">
+                            <!-- Populated dynamically via script.js -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Right Hints for Settings -->
+            <div class="bottom-hints">
+                <div class="hint-item">
+                    <span class="keycap"><svg width="10" height="13" viewBox="0 0 10 13" fill="#000"><polygon points="5,1 1,5 9,5"/><polygon points="5,12 1,8 9,8"/></svg></span>
+                    <span class="hint-label">MOVE</span>
+                </div>
+                <span class="hint-divider apply-divider hidden" id="apply-divider">/</span>
+                <div class="hint-item btn-apply hidden" id="apply-settings-btn" title="Click or press SPACE to apply settings">
+                    <span class="keycap text-keycap space-keycap">SPACE</span>
+                    <span class="hint-label apply-label">APPLY CHANGES</span>
+                </div>
+                <span class="hint-divider">/</span>
+                <div class="hint-item">
+                    <span class="keycap"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="#000" stroke-width="2" stroke-linecap="square"><path d="M10 2v5H3M6 4.5L3 7l3 2.5"/></svg></span>
+                    <span class="hint-label">SELECT</span>
+                </div>
+                <span class="hint-divider">/</span>
+                <div class="hint-item">
+                    <span class="keycap text-keycap">ESC</span>
+                    <span class="hint-label">BACK</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
